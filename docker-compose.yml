@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  mysql1:
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql1_data:/var/lib/mysql
+      - ./initDB/amazon_init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+  mysql2:
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql2_data:/var/lib/mysql
+      - ./initDB/flickr_init_db_1.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+  mysql3:
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql3_data:/var/lib/mysql
+      - ./initDB/flickr_init_db_2.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+  mysql4:
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3309:3306"
+    volumes:
+      - mysql4_data:/var/lib/mysql
+      - ./initDB/snow_flake_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+  mysql5:
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3310:3306"
+    volumes:
+      - mysql5_data:/var/lib/mysql
+      - ./initDB/snow_flake_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+  mysql6:
+    image: mysql:8.0
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3311:3306"
+    volumes:
+      - mysql6_data:/var/lib/mysql
+      - ./initDB/snow_flake_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+
+
+volumes:
+  mysql1_data:
+  mysql2_data:
+  mysql3_data:
+  mysql4_data:
+  mysql5_data:
+  mysql6_data:
